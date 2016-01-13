@@ -1,0 +1,16 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+N	dijkstra.cpp	9;"	d	file:
+allvex	dijkstra.cpp	/^set<int> allvex;$/;"	v
+cellT	dijkstra.cpp	/^struct cellT{$/;"	s	file:
+dijkstra	dijkstra.cpp	/^void dijkstra(map<int,vector<cellT> > graph,map<int,int> &path){$/;"	f
+findNextVex	dijkstra.cpp	/^int findNextVex(map<int,vector<cellT> > graph,map<int,int> path,int &nextVex){$/;"	f
+main	dijkstra.cpp	/^int main(){$/;"	f
+shortestPath	dijkstra.cpp	/^void shortestPath(map<int,vector<cellT> > graph,int s,map<int,int> &path){$/;"	f
+vertex	dijkstra.cpp	/^	int vertex;$/;"	m	struct:cellT	file:
+visited	dijkstra.cpp	/^set<int> visited;$/;"	v
+weight	dijkstra.cpp	/^	int weight;$/;"	m	struct:cellT	file:

@@ -1,0 +1,50 @@
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <stdlib.h>
+#include "../include/Utilit.h"
+using namespace std;
+typedef struct job{
+	int wei;
+	int len;
+	job(int weight,int length){
+		wei = weight;
+		len = length;
+		return this;
+	}
+	bool operator>(const job &rth){
+
+		return (wei-len)-(rth.wei-rth.len);
+	}
+};
+int main(){
+	ifstream fp;
+	int num_jobs;
+	job * jobs;
+	int cost=0;
+	int current_length=0;
+
+	fp.open("./jobs.txt",ios::in);
+	if(!fp){
+		cout<<"can't open data file !"<<endl;
+	}
+	string line;
+	getline(fp,line);
+	istringstream stream(line);
+	stream>>num_jobs;
+	jobs=(job*)malloc(sizeof(job)*num_jobs);
+	for(int i=0;i<num_jobs;i++){
+		getline(fp,line);
+		stream(line);
+		int weight,length
+		stream>>weight;
+		stream>>length;
+		job work(weight,length);	
+	}
+	HeapSort(jobs, num_jobs);
+	for(int i=0;i<num_jobs; i++){
+		current_length += jobs[i].len;
+		cost += current_length * jobs[i].wei; 
+	}
+	cout<<"cost : "<<cost<<endl;
+}

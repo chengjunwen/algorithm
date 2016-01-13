@@ -1,0 +1,83 @@
+#include <iostream>
+#include <fstream>
+#include <malloc.h>
+#include "../cs106blib/CS106/strutils.h"
+#include "../cs106blib/CS106/vector.h"
+
+using namespace std;
+#define N 100000
+int countInver(int *arr,int low,int high);
+int mergeCount(int *arr,int low,int high,int mid);
+int main(){
+	ifstream f;
+	f.open("./IntegerArray.txt");
+	if(!f){
+		cout<<"can't open the file !"<<endl;
+		return 0;
+	}
+	int array[N];
+	int num,i=0;
+	string temp;
+	while(!f.eof()){
+                getline(f,temp);
+                if(temp!="") {
+                        num =StringToInteger(temp);
+			if(i<100000)
+				array[i++]=num;
+                }
+        }
+	cout<<array[0]<<"   "<<array[1]<<endl;
+        f.close();
+	int sum;
+	sum=countInver(array,0,N-1);
+	cout<<sum<<endl;
+	return 0;       
+        
+
+}
+int countInver(int *arr,int low,int high){
+	int mid =(high-low)/2+low;
+	int a,b,c;
+	if(low==high) return 0;
+        a=countInver(arr,low,mid);
+	b=countInver(arr,mid+1,high);
+	c=mergeCount(arr,low,high,mid);
+	return a+b+c;
+}
+int mergeCount(int *arr,int low,int high,int mid){
+//	Vector <int> temp;
+	int i=low,j=mid+1;
+	int count=0;
+	int size=high-low+1;
+	int *temp=(int *)malloc(sizeof(int)*size);
+
+
+	bool f1=1;
+	for(int k=0;k<high-low+1;k++){
+		if(i<=mid&&j<=high){
+			if(arr[i]<=arr[j])
+			{
+				temp[k]=arr[i++];
+				if(!f1){
+					 count++;
+				}
+				f1=1;
+			}
+			else{
+				temp[k]=arr[j++];
+				if(f1){
+					count++;
+				}
+				f1=0;
+			}
+		}
+		if(i<=mid) temp[k]=arr[i++];
+		if(j<=high) temp[k]=arr[j++]
+	}
+	int n=0;
+	for(int k=low;k<high+1;k++){
+		arr[k]=temp[n];
+		n++;
+	}
+	free(temp);
+}
