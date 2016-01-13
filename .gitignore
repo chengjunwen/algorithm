@@ -1,5 +1,5 @@
-/analys1/*.txt
-/analys2/*.txt
-
-/analys1/*/*.txt
-/analys1/*/*.txt
+*.txt
+*swp
+*~
+*.o
+*.exe
